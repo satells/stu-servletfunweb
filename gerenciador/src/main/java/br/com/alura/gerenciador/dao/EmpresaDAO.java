@@ -18,12 +18,19 @@ public class EmpresaDAO {
 		geraIdEAdiciona(new Empresa("Google"));
 		geraIdEAdiciona(new Empresa("Caelum"));
 		geraIdEAdiciona(new Empresa("Casa do Código"));
+		geraIdEAdiciona(new Empresa("Mercado da Praça"));
+		geraIdEAdiciona(new Empresa("Dia Supermercados"));
+		geraIdEAdiciona(new Empresa("Padaria"));
+		geraIdEAdiciona(new Empresa("Construtora"));
+		geraIdEAdiciona(new Empresa("Avaliadora"));
+		geraIdEAdiciona(new Empresa("Hospital"));
+
 	}
 
 	public Collection<Empresa> buscaPorSimilaridade(String nome) {
 		if (nome == null)
 			return EMPRESAS.values();
-		
+
 		List<Empresa> similares = new ArrayList<>();
 		for (Empresa empresa : EMPRESAS.values()) {
 			if (empresa.getNome().toLowerCase().contains(nome.toLowerCase()))
@@ -37,7 +44,7 @@ public class EmpresaDAO {
 	}
 
 	private static void geraIdEAdiciona(Empresa empresa) {
-		long id = EMPRESAS.size()+1l;
+		long id = EMPRESAS.size() + 1l;
 		empresa.setId(id);
 		EMPRESAS.put(id, empresa);
 	}
