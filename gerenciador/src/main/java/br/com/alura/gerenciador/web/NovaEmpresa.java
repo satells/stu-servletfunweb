@@ -14,16 +14,18 @@ import br.com.alura.gerenciador.dao.EmpresaDAO;
 
 @WebServlet(urlPatterns = "/novaEmpresa")
 public class NovaEmpresa extends HttpServlet {
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String nome = req.getParameter("nome");
-		Empresa empresa = new Empresa(nome);
+    private static final long serialVersionUID = -7498237010538197353L;
 
-		new EmpresaDAO().adiciona(empresa);
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	String nome = req.getParameter("nome");
+	Empresa empresa = new Empresa(nome);
 
-		PrintWriter writer = resp.getWriter();
-		writer.print("<html><bocy>Cadastrado com sucesso a emprea: " + nome + "</bocy></html>");
+	new EmpresaDAO().adiciona(empresa);
 
-	}
+	PrintWriter writer = resp.getWriter();
+	writer.print("<html><bocy>Cadastrado com sucesso a emprea: " + nome + "</bocy></html>");
+
+    }
 
 }
