@@ -30,7 +30,7 @@ public class Login extends HttpServlet {
 	    message = usuario.getEmail();
 
 	    Cookie cookie = new Cookie("usuario.logado", usuario.getEmail());
-	    cookie.setMaxAge(30);
+	    cookie.setMaxAge(120);
 	    resp.addCookie(cookie);
 	}
 	writer.print("<html><body>" + message + "</body></html>");
