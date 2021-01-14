@@ -21,6 +21,7 @@ public class Login extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	String email = req.getParameter("email");
 	String senha = req.getParameter("senha");
+
 	UsuarioDAO usuarioDAO = new UsuarioDAO();
 	Usuario usuario = usuarioDAO.buscaPorEmailESenha(email, senha);
 
