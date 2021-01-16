@@ -17,39 +17,39 @@ import br.com.alura.gerenciador.Usuario;
 @WebFilter(urlPatterns = "/*")
 public class FiltroDeAuditoria implements Filter {
 
-    public FiltroDeAuditoria() {
-    }
+	public FiltroDeAuditoria() {
+	}
 
-    public void destroy() {
-    }
+	public void destroy() {
+	}
 
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-	HttpServletRequest req = (HttpServletRequest) request;
-	String uri = req.getRequestURI();
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+		HttpServletRequest req = (HttpServletRequest) request;
+		String uri = req.getRequestURI();
 
-	String usuario = getUsuario(req);
+		String usuario = getUsuario(req);
 
-	System.out.println("Usuário " + usuario + " acessando a URI: " + uri);
-	chain.doFilter(request, response);
+		System.out.println("Usuário " + usuario + " acessando a URI: " + uri);
+		chain.doFilter(request, response);
 
-    }
+	}
 
-    private String getUsuario(HttpServletRequest req) {
-	HttpSession session = req.getSession();
-	Usuario usuario = (Usuario) session.getAttribute("usuario.logado");
+	private String getUsuario(HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
 
-	// Cookie cookie = new Cookies(req.getCookies()).buscaUsuarioLogado();
+		// Cookie cookie = new Cookies(req.getCookies()).buscaUsuarioLogado();
 
 //	if (cookie == null)
 //	    return "<deslogado>";
 
-	if (usuario == null)
-	    return "<deslogado>";
+		if (usuario == null)
+			return "<deslogado>";
 
-	return usuario.getEmail();
-    }
+		return usuario.getEmail();
+	}
 
-    public void init(FilterConfig fConfig) throws ServletException {
+	public void init(FilterConfig fConfig) throws ServletException {
 
-    }
+	}
 }

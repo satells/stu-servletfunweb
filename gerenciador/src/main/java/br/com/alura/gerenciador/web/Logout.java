@@ -13,18 +13,18 @@ import javax.servlet.http.HttpSession;
 @WebServlet(urlPatterns = "/logout")
 public class Logout extends HttpServlet {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	HttpSession session = req.getSession();
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		HttpSession session = req.getSession();
 
-//	session.removeAttribute("usuario.logado");
-	session.invalidate();
+//	session.removeAttribute("usuarioLogado");
+		session.invalidate();
 
-	// resp.sendRedirect("logout.html");
-	RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/paginas/logout.html");
-	dispatcher.forward(req, resp);
+		// resp.sendRedirect("logout.html");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/paginas/logout.html");
+		dispatcher.forward(req, resp);
 
-    }
+	}
 }

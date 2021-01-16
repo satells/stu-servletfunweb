@@ -15,32 +15,32 @@ import br.com.alura.gerenciador.dao.UsuarioDAO;
 
 @WebServlet(urlPatterns = "/login")
 public class Login extends HttpServlet {
-    private static final long serialVersionUID = -3796313427747926879L;
+	private static final long serialVersionUID = -3796313427747926879L;
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	String email = req.getParameter("email");
-	String senha = req.getParameter("senha");
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String email = req.getParameter("email");
+		String senha = req.getParameter("senha");
 
-	UsuarioDAO usuarioDAO = new UsuarioDAO();
-	Usuario usuario = usuarioDAO.buscaPorEmailESenha(email, senha);
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		Usuario usuario = usuarioDAO.buscaPorEmailESenha(email, senha);
 
-	PrintWriter writer = resp.getWriter();
-	String message = "Usuário não encontrado!";
-	if (usuario != null) {
+		PrintWriter writer = resp.getWriter();
+		String message = "Usuário não encontrado!";
+		if (usuario != null) {
 
-	    HttpSession session = req.getSession();
+			HttpSession session = req.getSession();
 
-	    session.setAttribute("usuario.logado", usuario);
+			session.setAttribute("usuarioLogado", usuario);
 
-	    message = usuario.getEmail();
+			message = usuario.getEmail();
 
 //	    Cookie cookie = new Cookie("usuario.logado", usuario.getEmail());
 //	    cookie.setMaxAge(120);
 //	    resp.addCookie(cookie);
-	}
-	writer.print("<html><body>" + message + "</body></html>");
+		}
+		writer.print("<html><body>" + message + "</body></html>");
 
-    }
+	}
 
 }
